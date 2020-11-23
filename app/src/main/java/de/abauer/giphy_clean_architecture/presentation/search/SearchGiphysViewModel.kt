@@ -1,11 +1,12 @@
 package de.abauer.giphy_clean_architecture.presentation.search
 
+import androidx.hilt.lifecycle.ViewModelInject
 import de.abauer.giphy_clean_architecture.domain.model.DataResult
 import de.abauer.giphy_clean_architecture.domain.usecase.SearchGiphysUseCase
 import io.uniflow.androidx.flow.AndroidDataFlow
 import io.uniflow.core.flow.data.UIState
 
-class SearchGiphysViewModel(
+class SearchGiphysViewModel @ViewModelInject constructor(
     private val searchGiphysUseCase: SearchGiphysUseCase
 ) : AndroidDataFlow(defaultState = UIState.Empty)  {
 

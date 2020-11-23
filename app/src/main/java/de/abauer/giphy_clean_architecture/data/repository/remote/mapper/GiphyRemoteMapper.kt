@@ -3,8 +3,11 @@ package de.abauer.giphy_clean_architecture.data.repository.remote.mapper
 import de.abauer.giphy_clean_architecture.data.model.GiphyResultList
 import de.abauer.giphy_clean_architecture.data.model.Mapper
 import de.abauer.giphy_clean_architecture.domain.model.Giphy
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class GiphyRemoteMapper : Mapper<GiphyResultList, List<Giphy>> {
+@Singleton
+class GiphyRemoteMapper @Inject constructor() : Mapper<GiphyResultList, List<Giphy>> {
 
     override fun invoke(input: GiphyResultList): List<Giphy> {
         val giphyList = mutableListOf<Giphy>()

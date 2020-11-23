@@ -7,19 +7,20 @@ import android.view.View.VISIBLE
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import de.abauer.giphy_androidcleanarchitecture.R
 import de.abauer.giphy_androidcleanarchitecture.databinding.GiphyTrendingFragmentBinding
 import de.abauer.giphy_clean_architecture.domain.model.Giphy
 import de.abauer.giphy_clean_architecture.presentation.MainActivity
 import io.uniflow.androidx.flow.onStates
-import org.koin.android.viewmodel.ext.android.viewModel
 import viewLifecycleLazy
 
-
+@AndroidEntryPoint
 class TrendingGiphysFragment : Fragment(R.layout.giphy_trending_fragment), TrendingClickListener {
 
-    private val trendingGiphysViewModel: TrendingGiphysViewModel by viewModel()
+    private val trendingGiphysViewModel by viewModels<TrendingGiphysViewModel>()
     private lateinit var trendingGiphyAdapter: TrendingGiphyAdapter
 
     // Scoped to the lifecycle of the fragment's view (between onCreateView and onDestroyView)
@@ -28,7 +29,7 @@ class TrendingGiphysFragment : Fragment(R.layout.giphy_trending_fragment), Trend
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (activity!! as MainActivity).supportActionBar!!.title = getString(R.string.trendingTitle)
+        (requireActivity() as MainActivity).supportActionBar!!.title = getString(R.string.trendingTitle)
 
         // Init views
         initRecyclerView()

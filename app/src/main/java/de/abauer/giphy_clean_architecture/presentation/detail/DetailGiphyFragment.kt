@@ -2,24 +2,23 @@ package de.abauer.giphy_clean_architecture.presentation.detail
 
 import android.app.Activity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.app.ShareCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import dagger.hilt.android.AndroidEntryPoint
 import de.abauer.giphy_androidcleanarchitecture.R
 import de.abauer.giphy_androidcleanarchitecture.databinding.FragmentGiphyDetailBinding
 import de.abauer.giphy_clean_architecture.data.inject.GlideApp
 import io.uniflow.androidx.flow.onStates
-import org.koin.android.ext.android.inject
 import viewLifecycleLazy
 
-
+@AndroidEntryPoint
 class DetailGiphyFragment : Fragment(R.layout.fragment_giphy_detail) {
 
     private val giphyDetailFragmentArgs: DetailGiphyFragmentArgs by navArgs()
-    private val detailGiphyViewModel: DetailGiphyViewModel by inject()
+    private val detailGiphyViewModel by viewModels<DetailGiphyViewModel>()
 
     private val binding by viewLifecycleLazy { FragmentGiphyDetailBinding.bind(requireView()) }
 
