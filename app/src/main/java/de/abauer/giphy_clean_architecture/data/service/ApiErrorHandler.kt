@@ -3,8 +3,11 @@ package de.abauer.giphy_clean_architecture.data.service
 import de.abauer.giphy_clean_architecture.domain.model.ErrorModel
 import retrofit2.HttpException
 import timber.log.Timber
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class ApiErrorHandler {
+@Singleton
+class ApiErrorHandler @Inject constructor() {
     fun traceErrorException(
         throwable: Throwable?
     ): ErrorModel? {

@@ -19,7 +19,7 @@ It is built with Kotlin using:
     - NavGraph for navigation  
     - BottomNav for the BottomBar  
     - ViewBinding for accessing views  
-    - Koin for dependency injection  
+    - Hilt for dependency injection  
     - Glide for image/gif loading  
     - Retrofit + Moshi for API calls  
     - ViewPager2 with custom PageTransformer  

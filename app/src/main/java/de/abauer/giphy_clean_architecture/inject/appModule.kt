@@ -1,10 +1,19 @@
 package de.abauer.giphy_clean_architecture.inject
 
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import de.abauer.giphy_clean_architecture.AppDispatchers
 import de.abauer.giphy_clean_architecture.AppDispatchersImpl
-import org.koin.dsl.module
+import javax.inject.Singleton
 
-val appModule = module {
-
-    single<AppDispatchers> { AppDispatchersImpl() }
+@InstallIn(ApplicationComponent::class)
+@Module
+object AppModule {
+    @Singleton
+    @Provides
+    fun provideAppDispatchers(): AppDispatchers {
+        return AppDispatchersImpl()
+    }
 }
