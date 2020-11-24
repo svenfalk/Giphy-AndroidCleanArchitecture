@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="de.abauer.giphy_androidcleanarchitecture">
+
+    <application>
+        <activity
+            android:name="de.abauer.giphy_clean_architecture.HiltTestActivity"
+            android:exported="false"  />
+    </application>
+
+</manifest>

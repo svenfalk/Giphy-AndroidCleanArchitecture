@@ -6,6 +6,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -14,7 +15,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import de.abauer.giphy_androidcleanarchitecture.R
 import de.abauer.giphy_androidcleanarchitecture.databinding.SearchFragmentBinding
 import de.abauer.giphy_clean_architecture.domain.model.Giphy
-import de.abauer.giphy_clean_architecture.presentation.MainActivity
 import io.uniflow.androidx.flow.onStates
 import viewLifecycleLazy
 
@@ -26,7 +26,7 @@ class SearchGiphysFragment : Fragment(R.layout.search_fragment), SearchClickList
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (requireActivity() as MainActivity).supportActionBar!!.title = getString(R.string.searchTitle)
+        (requireActivity() as? AppCompatActivity)?.supportActionBar?.run { title = getString(R.string.searchTitle) }
         initSearch()
         initRecyclerView()
         initStateHandling()
